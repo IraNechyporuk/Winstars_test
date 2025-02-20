@@ -5,7 +5,7 @@ task_2/ner_model/data/**
 
 # Ігнорування всіх файлів у певних папках
 task_2/ner_model/ner_model/*
-task_2/img_model/*
+task_2/img_model/*.h5
 
 # Ігнорування конкретних форматів зображень у всьому проєкті
 *.jpg
