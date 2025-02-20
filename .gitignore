@@ -1,0 +1,33 @@
+# Ігнорування всіх зображень у підпапках data та prepared_data
+task_2/img_model/data/**
+task_2/img_model/prepared_data/**
+task_2/ner_model/data/**
+
+# Ігнорування всіх файлів у певних папках
+task_2/ner_model/ner_model/*
+task_2/img_model/*
+
+# Ігнорування конкретних форматів зображень у всьому проєкті
+*.jpg
+*.jpeg
+*.png
+*.bmp
+*.gif
+
+# Ігнорування моделей у різних форматах
+*.h5
+*.pth
+*.pt
+*.ckpt
+*.tflite
+*.onnx
+
+# Ігнорування папок із моделями та логами
+models/
+saved_models/
+logs/
+checkpoints/
+
+# Ігнорування тимчасових файлів
+*.tmp
+*.log
