@@ -1,0 +1,165 @@
+# README
+
+## Named Entity Recognition + Image Classification Pipeline
+
+## Project Description
+
+This project is focused on building a machine learning pipeline that handles two different tasks:
+1. **Named Entity Recognition (NER)**: Extracts the name of animals from a given text input.
+2. **Image Classification**: Classifies the animal in a given image.
+
+The main goal is to verify if the user is correct by checking if the animal mentioned in the text matches the animal in the provided image. 
+
+### Dataset
+
+1. **Animal Dataset**: An animal classification dataset with at least 10 animal classes, containing images for training, validation, and testing.
+2. **Text Data**: A dataset with animal-related posts for training the Named Entity Recognition (NER) model. This dataset will help the model recognize animal names in text inputs.
+
+### Pipeline Requirements:
+
+- **NER Model**: Train a Named Entity Recognition (NER) model to extract animal names from the text input.
+- **Image Classification Model**: Train a model to classify animals in images.
+- **Pipeline**: Build a Python script that takes as input both the text and the image and outputs a boolean value, indicating whether the statement is true or false.
+
+### Key Files and Structure:
+
+```plaintext
+task_2/
+    pipeline.py                          # Python script for the pipeline (takes text and image as input and provides a boolean output)
+    README.md                            # Project description and instructions
+    requirements.txt                     # Python dependencies for the project
+    [img_model]
+        exploratory_data_analysis.ipynb  # Jupyter notebook for exploratory data analysis of the animal image dataset
+        img_classification_model.h5     # Trained image classification model
+        Multi_Class_Animal_Classification.csv  # Animal dataset (contains labeled images)
+        [data]
+            [test]                       # Directory with test images for each animal class
+                [butterfly]  
+                [cat]   
+                [dog]    
+                [squirrel]  
+                [cow]    
+                [monkey]  
+                [spider]  
+                [elephant]  
+                [hen]  
+                [horse]  
+                [sheep]  
+                [panda]  
+            [train]                      # Directory with training images for each animal class
+                [butterfly]  
+                [cat]   
+                [dog]    
+                [squirrel]  
+                [cow]    
+                [monkey]  
+                [spider]  
+                [elephant]  
+                [hen]  
+                [horse]  
+                [sheep]  
+                [panda]  
+            [validation]                 # Directory with validation images for each animal class
+                [butterfly]  
+                [cat]   
+                [dog]    
+                [squirrel]  
+                [cow]    
+                [monkey]  
+                [spider]  
+                [elephant]  
+                [hen]  
+                [horse]  
+                [sheep]  
+                [panda]  
+        [prepared_data]                  # Prepared image data ready for training
+            [butterfly]  
+            [cat]   
+            [dog]    
+            [squirrel]  
+            [cow]    
+            [monkey]  
+            [spider]  
+            [elephant]  
+            [hen]  
+            [horse]  
+            [sheep]  
+            [panda]  
+    [ner_model]
+        [data]
+            formatted_ner_data.json      # Formatted NER data for training
+            reddit_animal_posts.json     # Raw data from Reddit (text data for NER)
+            synthetic_animal_data.json   # Synthetic data for NER
+            test_ner_data.json           # Test data for NER
+            train_ner_data.json          # Training data for NER
+        ner_model
+            [checkpoint-96]              # Checkpoint directory for the trained NER model
+            config.json                  # Configuration file for NER model
+            model.safetensors            # Model weights for the NER model
+            tokenizer.json               # Tokenizer for NER
+        exploratory_data_analysis.ipynb  # Jupyter notebook for exploratory data analysis of NER data
+    [input_data]
+        my_photo.jpg                     # Example input image for testing the pipeline
+        my_text.txt                      # Example input text for testing the pipeline
+    [output_answer]
+        answer.txt                       # Output file with the result of the pipeline (True/False)
+
+### How to Use:
+
+1. **Create a virtual environment (optional but recommended):**
+   Run the following command to create a virtual environment:
+
+2. **Activate the virtual environment:**
+- On Windows, run:
+  ```
+  venv\Scripts\activate
+  ```
+- On macOS/Linux, run:
+  ```
+  source venv/bin/activate
+  ```
+
+3. **Install the dependencies from `requirements.txt`:**
+After activating the virtual environment, install the required libraries using the following command:
+  ```
+  pip install -r requirements.txt
+  ```
+
+The `requirements.txt` file contains the following libraries:
+- `numpy`
+- `scikit-learn`
+- `pandas`
+- `tensorflow` (Keras backend)
+- `matplotlib`
+- `tqdm`
+- `pillow`
+- `praw`
+- `transformers` +
+- `datasets` 
+- `torch`
+
+4. **Add input data**:
+- Place your **photo** and **text** file in the `input_data` folder.
+- The **photo** should be named `my_photo.jpg`.
+- The **text** should be written in a file named `my_text.txt`.
+
+5. **Running the pipeline**:
+To test how the trained models work, execute the `pipeline.py` file. This will run the entire pipeline, where the following types of input sentences are supported (such as):
+- “There is a cow in the picture.”
+
+The models are trained for the following animal classes:
+- `butterfly`
+- `cat`
+- `dog`
+- `squirrel`
+- `cow`
+- `monkey`
+- `spider`
+- `elephant`
+- `hen`
+- `horse`
+- `sheep`
+- `panda`
+
+6. **Output**:
+The result of the pipeline execution will be saved in the `output_result` folder, in the file named `answer.txt`.

@@ -1,0 +1,113 @@
+# README
+
+## Image Classification with OOP (MNIST Dataset)
+
+This project implements an image classification task using the MNIST dataset, showcasing three different classification models: Random Forest, Feed-Forward Neural Network (FFNN), and Convolutional Neural Network (CNN). Each model is encapsulated in a separate class that adheres to the `MnistClassifierInterface`, which provides a unified interface for training and prediction.
+
+### Overview
+
+1. **Random Forest**: A traditional machine learning model used for classification.
+2. **Feed-Forward Neural Network**: A simple neural network for image classification.
+3. **Convolutional Neural Network**: A deep learning model designed for image data.
+
+Each model is abstracted under the `MnistClassifier` class, which takes an algorithm name as input and provides a unified interface for training and prediction.
+
+### Structure
+
+- **MnistClassifierInterface**: This is an abstract base class that defines the essential methods `train` and `predict` that every model must implement.
+  
+- **RandomForestModel**: A class that implements the Random Forest classifier using the `RandomForestClassifier` from `sklearn.ensemble`.
+
+- **FeedForwardNNModel**: A class that implements a simple Feed-Forward Neural Network using the `keras` library.
+
+- **CNNModel**: A class that implements a Convolutional Neural Network using the `keras` library.
+
+- **MnistClassifier**: A class that acts as a manager, selecting the appropriate model based on the provided `algorithm` parameter.
+
+## Requirements
+
+This project requires the following Python libraries. You can install them using the provided `requirements.txt` file.
+
+1. **Create a virtual environment (optional but recommended):**
+   Run the following command to create a virtual environment:
+
+2. **Activate the virtual environment:**
+- On Windows, run:
+  ```
+  venv\Scripts\activate
+  ```
+- On macOS/Linux, run:
+  ```
+  source venv/bin/activate
+  ```
+
+3. **Install the dependencies from `requirements.txt`:**
+After activating the virtual environment, install the required libraries using the following command:
+  ```
+  pip install -r requirements.txt
+  ```
+
+The `requirements.txt` file contains the following libraries:
+- `numpy`
+- `scikit-learn`
+- `keras`
+- `tensorflow` (Keras backend)
+- `matplotlib`
+
+### How to Use
+
+1. **Import the necessary modules**:
+   ```python
+   from your_module import MnistClassifier
+   ```
+
+2. **Choose the algorithm**:
+   The `MnistClassifier` class can take one of three algorithms as input:
+   - `rf` for Random Forest
+   - `nn` for Feed-Forward Neural Network
+   - `cnn` for Convolutional Neural Network
+   - `exit` for exit
+
+3. **Create a classifier object**:
+   ```python
+   classifier = MnistClassifier(algorithm='cnn')  # For CNN model
+   ```
+
+4. **Train the model**:
+   ```python
+   classifier.train(X_train, y_train)
+   ```
+
+5. **Make predictions**:
+   ```python
+   predictions = classifier.predict(X_test)
+   ```
+
+6. **Evaluate the accuracy**:
+   ```python
+   from sklearn.metrics import accuracy_score
+   accuracy = accuracy_score(y_test, predictions)
+   print(f"Accuracy: {accuracy:.4f}")
+   ```
+
+### Dataset
+
+The project uses the **MNIST** dataset, which consists of 28x28 pixel grayscale images of handwritten digits (0-9). The dataset is loaded automatically using Keras' `mnist.load_data()` function.
+
+### Model Architecture
+
+- **Random Forest**:
+  - `n_estimators`: 12 trees
+  - `max_depth`: 5
+  - `min_samples_split`: 5
+
+- **Feed-Forward Neural Network**:
+  - Input layer: 784 neurons (flattened 28x28 image)
+  - Hidden layer: 64 neurons
+  - Output layer: 10 neurons (softmax activation for 10 digit classes)
+
+- **Convolutional Neural Network**:
+  - Conv2D layer: 16 filters, kernel size (3,3), ReLU activation
+  - MaxPooling2D layer: Pool size (2,2)
+  - Dense layer: 64 neurons
+  - Output layer: 10 neurons (softmax activation for 10 digit classes)
